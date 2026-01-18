@@ -5,7 +5,10 @@
 CREATE TABLE document_type (
     id SERIAL PRIMARY KEY,
     type character varying(100) NOT NULL,
-    type_abreviation character varying(2) NOT NULL
+    type_abreviation character varying(2) NOT NULL,
+
+    CONSTRAINT unique_document_type_name UNIQUE (type),
+    CONSTRAINT unique_document_type_abreviation UNIQUE (type_abreviation)
 );
 
 
@@ -15,7 +18,9 @@ CREATE TABLE document_type (
 
 CREATE TABLE gender (
     id SERIAL PRIMARY KEY,
-    name text NOT NULL
+    name text NOT NULL,
+
+    CONSTRAINT unique_gender_name UNIQUE (name)
 );
 
 
@@ -37,7 +42,9 @@ CREATE TABLE users (
 
     FOREIGN KEY (document_type_id) REFERENCES document_type(id),
     FOREIGN KEY (gender_id) REFERENCES gender(id),
-    CONSTRAINT unique_doc_num UNIQUE (document_number)
+    CONSTRAINT unique_doc_num UNIQUE (document_number),
+    CONSTRAINT unique_username UNIQUE (username),
+    CONSTRAINT unique_email UNIQUE (email)
 );
 
 
@@ -81,7 +88,9 @@ CREATE TABLE weight (
 
 CREATE TABLE special_condition (
     id SERIAL PRIMARY KEY,
-    name text NOT NULL
+    name text NOT NULL,
+
+    CONSTRAINT unique_special_condition_name UNIQUE (name)
 );
 
 
@@ -105,7 +114,9 @@ CREATE TABLE patient_special_condition (
 
 CREATE TABLE macronutrient_group (
     id SERIAL PRIMARY KEY,
-    name text NOT NULL
+    name text NOT NULL,
+
+    CONSTRAINT unique_macronutrient_group_name UNIQUE (name)
 );
 
 
@@ -115,7 +126,9 @@ CREATE TABLE macronutrient_group (
 
 CREATE TABLE micronutrient_group (
     id SERIAL PRIMARY KEY,
-    name text NOT NULL
+    name text NOT NULL,
+
+    CONSTRAINT unique_micronutrient_group_name UNIQUE (name)
 );
 
 
@@ -125,7 +138,9 @@ CREATE TABLE micronutrient_group (
 
 CREATE TABLE food_group (
     id SERIAL PRIMARY KEY,
-    name text NOT NULL
+    name text NOT NULL,
+
+    CONSTRAINT unique_food_name UNIQUE (name)
 );
 
 
@@ -135,7 +150,9 @@ CREATE TABLE food_group (
 
 CREATE TABLE food_moment (
     id SERIAL PRIMARY KEY,
-    name text NOT NULL
+    name text NOT NULL,
+
+    CONSTRAINT unique_food_moment_name UNIQUE (name)
 );
 
 
@@ -153,7 +170,9 @@ CREATE TABLE food_exchange (
     kcal integer DEFAULT 0 NOT NULL,
 
     FOREIGN KEY (food_group_id) REFERENCES food_group(id),
-    FOREIGN KEY (macronutrient_group_id) REFERENCES macronutrient_group(id)
+    FOREIGN KEY (macronutrient_group_id) REFERENCES macronutrient_group(id),
+
+    CONSTRAINT unique_food_exchange_name UNIQUE (food_name)
 );
 
 --
