@@ -59,15 +59,21 @@ CREATE TABLE nutritionist (
 
 CREATE TABLE patient (
     id INTEGER PRIMARY KEY,
-    weight numeric(10,2) NOT NULL,
     height numeric(10,2) NOT NULL,
     year_birth integer NOT NULL,
-    nutritionist_id INTEGER NOT NULL,
 
-    FOREIGN KEY (id) REFERENCES users(id),
-    FOREIGN KEY (nutritionist_id) REFERENCES nutritionist(id)
+    FOREIGN KEY (id) REFERENCES users(id)
 );
 
+
+CREATE TABLE weight (
+    id SERIAL PRIMARY KEY,
+    weight numeric(10,2) NOT NULL,
+    date TIMESTAMP NOT NULL,
+    patient_id integer NOT NULL,
+
+    FOREIGN KEY (patient_id) REFERENCES patient(id)
+);
 
 --
 -- Name: special_condition
