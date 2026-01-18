@@ -1,3 +1,14 @@
 venv
+
 .env
+
 docs/db/db/
+
+*.vpp
+*.bak_*
+
+__pycache__/
+*.py[cod]
+
+.vscode/
+.idea/
