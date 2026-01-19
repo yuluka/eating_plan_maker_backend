@@ -6,6 +6,7 @@ from src.routes.food_group import router as food_group_router
 from src.routes.food_moment import router as food_moment_router
 from src.routes.macronutrient_group import router as macronutrient_group_router
 from src.routes.micronutrient_group import router as micronutrient_group_router
+from src.routes.special_condition import router as special_condition_router
 
 app = FastAPI(
     root_path=settings.CONTEXT_PATH,
@@ -23,3 +24,4 @@ app.include_router(food_group_router)
 app.include_router(food_moment_router)
 app.include_router(macronutrient_group_router)
 app.include_router(micronutrient_group_router)
+app.include_router(special_condition_router)
