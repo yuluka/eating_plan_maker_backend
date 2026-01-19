@@ -88,7 +88,7 @@ async def update_food_group(
     :raises HTTPException: If the used name is already in use or if the food group is not found.
     """
     try:
-        await crud.update_food_group(food_group_id, food_group_update, db)
+        return await crud.update_food_group(food_group_id, food_group_update, db)
     
     except HTTPException as http_exc:
         raise http_exc
