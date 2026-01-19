@@ -9,7 +9,7 @@ class FoodMomentBase(BaseModel):
 
     name: str = Field(
         ...,
-        description="The name of the food moment (e.g. 'Frutas', 'Hortalizas')",
+        description="The name of the food moment (e.g. 'Desayuno', 'Almuerzo')",
     )
 
 
